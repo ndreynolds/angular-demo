@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="exampleApp">
+  <head>
+    <title>Example 1</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css" type="text/css" media="all" />
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <!-- endbower -->
+    <script src="app.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Angular Expressions &amp; Filters</h1>
+      <p>
+        {{ 1 + 2 }} = 3 
+      </p>
+      <p>
+        Hello {{ 'World' + '!' }}
+      </p>
+      <ul>
+        <li ng-repeat="name in ['Bob', 'Sally', 'Joe']">{{ name }}</li>
+      </ul>
+      <p>
+        {{ 1250 | currency }}
+      </p>
+      <p>
+        {{ 'abc' | uppercase }}
+      </p>
+
+      <div ng-controller="ColorController">
+        <h1 style="background: {{color}}">Controllers &amp; Data Binding</h1>
+        <input type="color" ng-model="color">
+        <input type="text" ng-model="color">
+        You chose {{color}}
+        <button ng-click="reset()">Reset</button>
+      </div> 
+
+      <div ng-controller="State 
+    </div>
+  </body>
+</html>
