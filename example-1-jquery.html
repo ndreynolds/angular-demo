@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Example 1: Getting Started (jQuery version)</title>
+    <meta charset="utf-8" />
+
+    <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href="assets/style.css" rel='stylesheet' type='text/css'>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="page-header">Example 1: Getting Started (jQuery-style)</h2>
+
+      <h2>Angular Expressions &amp; Filters</h2>
+      <p>
+        <span id="result-1"></span> = 3
+      </p>
+      <p>
+        Hello <span id="result-2"></span>
+      </p>
+      <ul id="name-list">
+      </ul>
+      <p>
+        <span id="result-3"></span>
+      </p>
+      <p>
+        <span id="result-4"></span>
+      </p>
+
+      <div>
+        <h2 id="color-heading">Controllers &amp; Data Binding</h2>
+        <input type="color" id="color-picker">
+        <input type="text" id="color-input">
+        You chose <span id="color-display"></span>
+        <button id="color-reset-button">Reset</button>
+      </div> 
+    </div>
+
+    <script>
+      // {{ 1 + 2 }}
+      $('#result-1').text(1 + 2);
+
+      // {{ 'World' + '!' }}
+      $('#result-2').text('World' + '!');
+
+      // <li ng-repeat="name in ['Bob', 'Sally', 'Joe']">{{ 'Hello, ' + name + '!' }}</li>
+      $.each(['Bob', 'Sally', 'Joe'], function() {
+        $('#name-list').append($('<li>Hello, ' + this + '!</li>'));
+      });
+
+      // {{ 1250 || currency }}
+      var amount = 1250;
+      $('#result-3').text('$' + amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'));
+
+      // {{ 'abc' | uppercase }}
+      $('#result-4').text('abc'.toUpperCase())
+
+
+      // Color picker
+
+      var defaultColor = '#cccccc';
+
+      // Update each place the color is stored or displayed with the new color.
+      function updateColor(newColor) {
+        $('#color-picker').val(newColor);
+        $('#color-input').val(newColor);
+        $('#color-heading').css({background: newColor});
+        $('#color-display').text(newColor);
+      }
+
+      // Reset to the default color
+      function resetColor() {
+        updateColor(defaultColor);
+      }
+
+      // Update the current color with the just-changed input's value.
+      function changeHandler() {
+        updateColor($(this).val());
+      }
+
+      // Handle the changes to the two input methods 
+      $('#color-picker').change(changeHandler);
+      $('#color-input')
+        .change(changeHandler)
+        .keydown(changeHandler);
+
+      // Handle the changes to the two input methods 
+      $('#color-reset-button').click(resetColor);
+
+      // Set up the initial state.
+      resetColor();
+    </script>
+  </body>
+</html>

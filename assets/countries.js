@@ -1500,3 +1500,14 @@ window.COUNTRIES = [
     "continentName": "Africa"
   }
 ];
+
+window.CONTINENT_OPTIONS = [
+  { label: 'All continents...', value: 'all' },
+  { label: 'Africa',            value: 'Africa' }, 
+  { label: 'Antarctica',        value: 'Antarctica' },
+  { label: 'Asia',              value: 'Asia' },
+  { label: 'Europe',            value: 'Europe' },
+  { label: 'Oceania',           value: 'Oceania' },
+  { label: 'North America',     value: 'North America' },
+  { label: 'South America',     value: 'South America' }
+];

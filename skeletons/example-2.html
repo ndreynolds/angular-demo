@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html ng-app="exampleApp">
+<html ng-app="countriesApp">
   <head>
-    <title>Example 1</title>
+    <title>Example 2: Filtering Countries</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css" type="text/css" media="all" />
-    <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <!-- endbower -->
-    <script src="countries.js"></script>
-    <script src="app.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href="../assets/style.css" rel='stylesheet' type='text/css'>
+
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
+    <script src="../assets/countries.js"></script>
+    <script src="example-2.js"></script>
   </head>
   <body>
     <div class="container" ng-controller="CountriesController">
 
-      <h2 class="page-header">Example App: Filtering Countries</h2>
+      <h1 class="page-header">Example 2: Filtering Countries</h1>
       <p class="lead">
         In this example, we'll use Angular to display a list of countries and
         provide functionality to filter the list by search term, continent, and population.
@@ -25,19 +25,17 @@
         <div class="panel-heading">
           <div class="form-inline">
             <div class="form-group col-md-3">
-              <input class="form-control col-sm-12" type="text" placeholder="Search countries...">
+              <input class="form-control col-sm-12" type="text" ng-model="search" placeholder="Search countries...">
             </div>
             <div class="form-group col-md-3">
-              <select class="form-control">
-                <option disabled>All continents...</option>
-              </select>
+              <select class="form-control" ng-model="continent" ng-options="c.value as c.label for c in continents"></select>
             </div>
             <div class="form-group">
               <label class="control-label">Population</label>
-              <input class="form-control population-input" type="number" placeholder="Min">
+              <input class="form-control population-input" type="number" ng-model="min" placeholder="Min">
             </div>
             <div class="form-group">
-              <input class="form-control population-input" type="number" placeholder="Max">
+              <input class="form-control population-input" type="number" ng-model="max" placeholder="Max">
             </div>
           </div>
           <div class="clearfix"></div>
@@ -55,7 +53,7 @@
             </thead>
 
             <tbody>
-              <tr ng-repeat="country in countries">
+              <tr ng-repeat="country in countries | filter : search | populationBetween : min : max | inContinent : continent">
                 <td>{{ country.countryName }}</td>
                 <td>{{ country.capital }}</td>
                 <td>{{ country.population }}</td>

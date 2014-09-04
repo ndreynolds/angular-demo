@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html ng-app="exampleApp">
+  <head>
+    <title>Example 1: Getting Started</title>
+    <meta charset="utf-8" />
+
+    <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href="assets/style.css" rel='stylesheet' type='text/css'>
+
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="page-header"><a href="index.html">Angular Demo</a> / Example 1: Getting Started</h1>
+
+      <h2>Angular Expressions &amp; Filters</h2>
+      <p>
+        {{ 1 + 2 }} = 3 
+      </p>
+      <p>
+        Hello {{ 'World' + '!' }}
+      </p>
+      <ul>
+        <li ng-repeat="name in ['Bob', 'Sally', 'Joe']">{{ 'Hello, ' + name + '!' }}</li>
+      </ul>
+      <p>
+        {{ 1250 | currency }}
+      </p>
+      <p>
+        {{ 'abc' | uppercase }}
+      </p>
+
+      <div ng-controller="ColorController">
+        <h2 style="background: {{color}}">Controllers &amp; Data Binding</h2>
+        <input type="color" ng-model="color">
+        <input type="text" ng-model="color">
+        You chose {{color}}
+        <button ng-click="reset()">Reset</button>
+      </div> 
+    </div>
+
+    <script>
+      var exampleApp = angular.module('exampleApp', []);
+
+      exampleApp.controller('ColorController', function($scope) {
+        var defaultColor = '#cccccc';
+        $scope.color = defaultColor;
+
+        $scope.reset = function() {
+          $scope.color = defaultColor;
+        };
+      });
+    </script>
+  </body>
+</html>
