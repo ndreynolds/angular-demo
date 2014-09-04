@@ -5,54 +5,40 @@
     <meta charset="utf-8" />
 
     <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link href="../assets/style.css" rel='stylesheet' type='text/css'>
 
     <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
   </head>
   <body>
     <div class="container">
+      <br> 
+      <a class="btn btn-default" href="../index.html">&larr; Intro</a>
+      <a class="btn btn-default" href="../example-2/index.html">Example 2 &rarr;</a>
+
       <h1 class="page-header">Example 1: Getting Started</h1>
+      <p class="lead">
+        In this first example, we'll look at a few major concepts in AngularJS:
+      </p>
+      <dl>
+        <dt>Expressions</dt>
+        <dd>JavaScript-like code between two pairs of curly braces (e.g., <code ng-non-bindable>{{ 2 + 2 }}</code>)</dd>
 
-      <div>
-        <h2>Angular Expressions &amp; Filters</h2>
-        <p>
-          {{ 1 + 2 }} = 3 
-        </p>
-        <p>
-          Hello {{ 'World' + '!' }}
-        </p>
-        <ul>
-          <li ng-repeat="name in ['Bob', 'Sally', 'Joe']">{{ 'Hello, ' + name + '!' }}</li>
-        </ul>
-        <p>
-          {{ 1250 | currency }}
-        </p>
-        <p>
-          {{ 'abc' | uppercase }}
-        </p>
-      </div>
+        <dt>Filters</dt>
+        <dd>A way to transform your data. (e.g., <code>myArray | filter:searchTerm</code></code>)</dd>
 
-      <div ng-controller="ColorController">
-        <h2 style="background: {{color}}">Controllers &amp; Data Binding</h2>
-        <input type="color" ng-model="color">
-        <input type="text" ng-model="color">
-        You chose {{color}}
-        <button ng-click="reset()">Reset</button>
-      </div> 
+        <dt>Controllers</dt>
+        <dd>Manage your app's business logic</dd>
+
+        <dt>Data-binding</dt>
+        <dd>Keeps data in your controller in sync with your view (and vice-versa)</dd>
+      </dl>
+
+      <h2>Angular Expressions &amp; Filters</h2>
+      <a class="jsbin-embed" href="http://jsbin.com/gudok/1/embed?html,output">JS Bin</a><script src="http://static.jsbin.com/js/embed.js"></script>
+
+      <h2>Controllers &amp; Data-Binding</h2>
+      <a class="jsbin-embed" href="http://jsbin.com/puyinu/1/embed?html,js,output">JS Bin</a><script src="http://static.jsbin.com/js/embed.js"></script>
     </div>
-
-    <script>
-      var exampleApp = angular.module('exampleApp', []);
-
-      exampleApp.controller('ColorController', function($scope) {
-        var defaultColor = '#cccccc';
-        $scope.color = defaultColor;
-
-        $scope.reset = function() {
-          $scope.color = defaultColor;
-        };
-      });
-    </script>
   </body>
 </html>

@@ -1,4 +1,9 @@
 body {
   font-family: 'Open Sans', sans-serif;
   font-size: 180%;
+  padding-bottom: 100px;
+}
+
+iframe {
+  border: 1px solid #ccc;
 }
